@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #e3f2fd;
+        }
+
+        .form-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+            width: 100%;
+            border-left: 10px solid #42a5f5;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #424242;
+            font-size: 26px;
+            text-align: left;
+            border-bottom: 2px solid #42a5f5;
+            padding-bottom: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-bottom: 8px;
+            color: #424242;
+            font-size: 15px;
+            font-weight: bold;
+
+        }
+
+        input, select, textarea {
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #42a5f5;
+            box-shadow: 0 0 5px rgba(66, 165, 245, 0.3);
+        }
+
+        button {
+            padding: 12px;
+            background: #42a5f5;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            background: #1e88e5;
+            box-shadow: 0 4px 8px rgba(66, 165, 245, 0.3);
+        }
+
+        .btn-cancel {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px;
+            background: #ef5350;
+            color: #fff;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-cancel:hover {
+            background: #e53935;
+            box-shadow: 0 4px 8px rgba(239, 83, 80, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Employee Form</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="{% url 'employee_list' %}" class="btn-cancel">Cancel</a>
+    </div>
+</body>
+</html>
